@@ -9,17 +9,34 @@ import UIKit
 
 final class DPButton: UIButton {
 
-    init(){
-        super.init(frame: .zero)
-
-        var config = UIButton.Configuration.plain()
-        config.background.backgroundColor = .orange
-        config.background.cornerRadius = 16
-        configuration = config
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        configure()
     }
-
+    
+    
     required init?(coder: NSCoder) {
-        fatalError()
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
+    
+    convenience init(color: UIColor, title: String) {
+        self.init(frame: .zero)
+        set(color: color, title: title)
+    }
+    
+    
+    private func configure(){
+        configuration                             = .tinted()
+        configuration?.cornerStyle                = .medium
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    
+    func set(color: UIColor, title: String) {
+        configuration?.baseBackgroundColor  = color
+        configuration?.baseForegroundColor  = color
+        configuration?.title                = title
+    }
 }

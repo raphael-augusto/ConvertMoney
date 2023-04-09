@@ -11,7 +11,7 @@ final class SplashViewController: UIViewController {
 
     // MARK: - Properties
 
-    private lazy var customView: SplashLogic = {
+    private lazy var customView: SplashView = {
         let view = SplashView()
         return view
     }()
@@ -24,6 +24,7 @@ final class SplashViewController: UIViewController {
         return viewModel
     }()
 
+    
     // MARK: - Layout
 
     override func viewDidLoad() {
@@ -32,25 +33,13 @@ final class SplashViewController: UIViewController {
     }
 
     override func loadView() {
-        view = customView as? UIView
+        view = customView
     }
 
 }
 
 extension SplashViewController: SplashOutput {
 
-    func showHome() {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .yellow
-        viewController.modalPresentationStyle = .overFullScreen
-        present(viewController, animated: true)
-    }
 
-    func showOnboarding() {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .green
-        viewController.modalPresentationStyle = .overFullScreen
-        present(viewController, animated: true)
-    }
 
 }
