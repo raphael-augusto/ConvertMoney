@@ -7,13 +7,20 @@
 
 import UIKit
 
-protocol SplashLogic: AnyObject {
+protocol SplashLogic: AnyObject {}
 
-}
-
-final class SplashView: UIView, SplashLogic {
+final class SplashView: UIView {
 
     // MARK: - Layout
+    private lazy var loadingIndicator = DPLoading(color: .white, style: .medium, size: 3)
+    
+    private lazy var loadingLabel = DPTitleLabel(text: "Carregando...",
+                                                 textAlignment: .center,
+                                                 color: .white,
+                                                 fontSize: 22,
+                                                 weight: .regular,
+                                                 numberOfLines: nil)
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,14 +42,25 @@ final class SplashView: UIView, SplashLogic {
 extension SplashView: ConfigurableView {
     
     func initView() {
-        backgroundColor = .red
+        backgroundColor = UIColor(named: "darkGreen")
     }
     
-    func initSubviews() {}
+    func initSubviews() {
+        addSubviews(loadingIndicator)
+        addSubviews(loadingLabel)
+    }
     
-    func initConstraints() {}
+    func initConstraints() {
+        NSLayoutConstraint.activate([
+            loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
+            loadingIndicator.widthAnchor.constraint(equalToConstant: 63),
+            loadingIndicator.heightAnchor.constraint(equalToConstant: 63),
+            
+            loadingLabel.topAnchor.constraint(equalTo: loadingIndicator.bottomAnchor, constant: 14.5),
+            loadingLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+        ])
+    }
     
     func setupAdditional() {}
-    
-
 }
