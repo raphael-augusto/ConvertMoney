@@ -18,6 +18,9 @@
 		64C514F129E2509800A24265 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514F029E2509800A24265 /* ConfigurableView.swift */; };
 		64C514F329E255DF00A24265 /* DPLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514F229E255DF00A24265 /* DPLoading.swift */; };
 		64C514F529E258FF00A24265 /* DPTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514F429E258FF00A24265 /* DPTitleLabel.swift */; };
+		64C514F829E2670F00A24265 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514F729E2670F00A24265 /* OnboardingViewController.swift */; };
+		64C514FA29E26A9E00A24265 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514F929E26A9E00A24265 /* OnboardingView.swift */; };
+		64C514FD29E2765000A24265 /* Ext+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514FC29E2765000A24265 /* Ext+UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		64C514F029E2509800A24265 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
 		64C514F229E255DF00A24265 /* DPLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPLoading.swift; sourceTree = "<group>"; };
 		64C514F429E258FF00A24265 /* DPTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPTitleLabel.swift; sourceTree = "<group>"; };
+		64C514F729E2670F00A24265 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		64C514F929E26A9E00A24265 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		64C514FC29E2765000A24265 /* Ext+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +56,7 @@
 		4C94C4E429DE494900DBF102 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				64C514FB29E2763D00A24265 /* Extension */,
 				4C94C4E829DE4C3B00DBF102 /* ViewCode */,
 				4C94C4E529DE495600DBF102 /* Components */,
 			);
@@ -115,6 +122,7 @@
 		4CEF9AC429DE4316000C620A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				64C514F629E266EA00A24265 /* Onboarding */,
 				4CEF9AC529DE432C000C620A /* Splash */,
 			);
 			path = Features;
@@ -128,6 +136,23 @@
 				4C94C4E229DE477300DBF102 /* SplashView.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		64C514F629E266EA00A24265 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				64C514F729E2670F00A24265 /* OnboardingViewController.swift */,
+				64C514F929E26A9E00A24265 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		64C514FB29E2763D00A24265 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				64C514FC29E2765000A24265 /* Ext+UIView.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,13 +225,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64C514FD29E2765000A24265 /* Ext+UIView.swift in Sources */,
 				4CEF9AC729DE4339000C620A /* SplashViewController.swift in Sources */,
 				4CEF9AB029DE3FE3000C620A /* AppDelegate.swift in Sources */,
 				4C94C4E329DE477300DBF102 /* SplashView.swift in Sources */,
 				4CEF9AB229DE3FE3000C620A /* SceneDelegate.swift in Sources */,
 				64C514F329E255DF00A24265 /* DPLoading.swift in Sources */,
 				64C514F529E258FF00A24265 /* DPTitleLabel.swift in Sources */,
+				64C514FA29E26A9E00A24265 /* OnboardingView.swift in Sources */,
 				64C514F129E2509800A24265 /* ConfigurableView.swift in Sources */,
+				64C514F829E2670F00A24265 /* OnboardingViewController.swift in Sources */,
 				4C94C4E029DE45A800DBF102 /* SplashViewModel.swift in Sources */,
 				4C94C4E729DE496100DBF102 /* DPButton.swift in Sources */,
 			);
