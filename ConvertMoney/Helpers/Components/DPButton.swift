@@ -8,6 +8,8 @@
 import UIKit
 
 final class DPButton: UIButton {
+    
+    private var tapAction: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,22 +23,22 @@ final class DPButton: UIButton {
     }
     
     
-    convenience init(color: UIColor, title: String) {
+    convenience init(colorBackground: UIColor, title: String, titleColor: UIColor?) {
         self.init(frame: .zero)
-        set(color: color, title: title)
+        set(color: colorBackground, title: title, titleColor: titleColor)
     }
     
     
     private func configure(){
-        configuration                             = .tinted()
-        configuration?.cornerStyle                = .medium
+        configuration                             = .filled()
+        configuration?.cornerStyle                = .capsule
         translatesAutoresizingMaskIntoConstraints = false
     }
     
     
-    func set(color: UIColor, title: String) {
+    func set(color: UIColor, title: String, titleColor: UIColor?) {
         configuration?.baseBackgroundColor  = color
-        configuration?.baseForegroundColor  = color
+        configuration?.baseForegroundColor  = titleColor ?? .white
         configuration?.title                = title
     }
 }
