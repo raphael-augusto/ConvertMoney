@@ -21,6 +21,10 @@
 		64C514F829E2670F00A24265 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514F729E2670F00A24265 /* OnboardingViewController.swift */; };
 		64C514FA29E26A9E00A24265 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514F929E26A9E00A24265 /* OnboardingView.swift */; };
 		64C514FD29E2765000A24265 /* Ext+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514FC29E2765000A24265 /* Ext+UIView.swift */; };
+		64C5150029E3854E00A24265 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C514FF29E3854E00A24265 /* HomeViewController.swift */; };
+		64C5150229E3855B00A24265 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5150129E3855B00A24265 /* HomeView.swift */; };
+		64C5150529E3890B00A24265 /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5150429E3890B00A24265 /* CoinModel.swift */; };
+		64C5150729E3891B00A24265 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C5150629E3891B00A24265 /* WalletModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		64C514F729E2670F00A24265 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		64C514F929E26A9E00A24265 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		64C514FC29E2765000A24265 /* Ext+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIView.swift"; sourceTree = "<group>"; };
+		64C514FF29E3854E00A24265 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		64C5150129E3855B00A24265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		64C5150429E3890B00A24265 /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
+		64C5150629E3891B00A24265 /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				4C94C4E429DE494900DBF102 /* Helpers */,
+				64C5150329E388C700A24265 /* Model */,
 				4CEF9AC429DE4316000C620A /* Features */,
 				4CEF9AC329DE430C000C620A /* Application */,
 				4CEF9AB829DE3FE7000C620A /* Assets.xcassets */,
@@ -122,6 +131,7 @@
 		4CEF9AC429DE4316000C620A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				64C514FE29E3853300A24265 /* Home */,
 				64C514F629E266EA00A24265 /* Onboarding */,
 				4CEF9AC529DE432C000C620A /* Splash */,
 			);
@@ -153,6 +163,24 @@
 				64C514FC29E2765000A24265 /* Ext+UIView.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		64C514FE29E3853300A24265 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				64C514FF29E3854E00A24265 /* HomeViewController.swift */,
+				64C5150129E3855B00A24265 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		64C5150329E388C700A24265 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64C5150429E3890B00A24265 /* CoinModel.swift */,
+				64C5150629E3891B00A24265 /* WalletModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,16 +254,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				64C514FD29E2765000A24265 /* Ext+UIView.swift in Sources */,
+				64C5150229E3855B00A24265 /* HomeView.swift in Sources */,
 				4CEF9AC729DE4339000C620A /* SplashViewController.swift in Sources */,
 				4CEF9AB029DE3FE3000C620A /* AppDelegate.swift in Sources */,
 				4C94C4E329DE477300DBF102 /* SplashView.swift in Sources */,
 				4CEF9AB229DE3FE3000C620A /* SceneDelegate.swift in Sources */,
+				64C5150729E3891B00A24265 /* WalletModel.swift in Sources */,
 				64C514F329E255DF00A24265 /* DPLoading.swift in Sources */,
 				64C514F529E258FF00A24265 /* DPTitleLabel.swift in Sources */,
 				64C514FA29E26A9E00A24265 /* OnboardingView.swift in Sources */,
 				64C514F129E2509800A24265 /* ConfigurableView.swift in Sources */,
+				64C5150529E3890B00A24265 /* CoinModel.swift in Sources */,
 				64C514F829E2670F00A24265 /* OnboardingViewController.swift in Sources */,
 				4C94C4E029DE45A800DBF102 /* SplashViewModel.swift in Sources */,
+				64C5150029E3854E00A24265 /* HomeViewController.swift in Sources */,
 				4C94C4E729DE496100DBF102 /* DPButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
