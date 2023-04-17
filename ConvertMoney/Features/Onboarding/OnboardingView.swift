@@ -19,9 +19,23 @@ final class OnboardingView: UIView {
     
     
     //MARK: - Properts
+    private lazy var stackTopContainer: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            imageMoney,
+            titleLabel
+        ])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 8
+        
+        return stackView
+    }()
+    
+    
     private lazy var imageMoney: UIImageView = {
-        let image = UIImage(named: "money")
-        let img = UIImageView(image: image)
+        let img = UIImageView(image: .onboardingImg)
         img.translatesAutoresizingMaskIntoConstraints = false
         img.contentMode = .scaleAspectFill
         
@@ -29,42 +43,62 @@ final class OnboardingView: UIView {
     }()
     
     
-    private lazy var titleLabel = DPTitleLabel(text: "Convert Money",
+    private lazy var titleLabel = DPTitleLabel(text: "Convert \nMoney",
                                                textAlignment: .center,
-                                               color: .white,
+                                               color: .Neutral.color6,
                                                fontSize: 42,
                                                weight: .bold,
-                                               numberOfLines: 2)
+                                               numberOfLines: nil)
     
     
     private lazy var container: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .Neutral.color6
         
         view.roundCorners(cornerRadiuns: 40, typCorners: [.upperLeft, .upperRight])
         
         return view
     }()
     
+    
+    private lazy var stackContainer: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [
+            titleContainerLabel,
+            descriptionLabel,
+            buttonToStart
+        ])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 22
+
+        stackView.setCustomSpacing(40, after: descriptionLabel)
+        
+        return stackView
+    }()
+    
+    
     private lazy var titleContainerLabel = DPTitleLabel(text: "Olá,\nvamos economizar?",
                                                         textAlignment: .left,
                                                         color: .black,
                                                         fontSize: 32,
                                                         weight: .bold,
-                                                        numberOfLines: 2)
+                                                        numberOfLines: nil)
     
     private lazy var descriptionLabel = DPTitleLabel(text: "Nunca foi tão fácil saber o seu saldo e se você consegue comprar aquele produto desejado",
-                                                        textAlignment: .left,
-                                                        color: .black,
-                                                        fontSize: 16,
-                                                        weight: .regular,
-                                                        numberOfLines: 2)
+                                                     textAlignment: .left,
+                                                     color: .black,
+                                                     fontSize: 16,
+                                                     weight: .regular,
+                                                     numberOfLines: nil)
 
     
-    private lazy var buttonToStart = DPButton(colorBackground: UIColor(named: "orageDefault")!,
+    private lazy var buttonToStart = DPButton(colorBackground: .Brand.color1,
                                               title: "COMEÇAR",
-                                              titleColor: nil)
+                                              titleColor: nil,
+                                              action: .init(handler:  { _ in self.didButtonToStart()}) )
 
 
     
@@ -88,57 +122,44 @@ final class OnboardingView: UIView {
 //MARK: - Components and Constraints
 extension OnboardingView : ConfigurableView {
     func initView() {
-        backgroundColor = UIColor(named: "darkGreen")
+        backgroundColor = .Brand.color3
     }
     
     func initSubviews() {
-        addSubviews(imageMoney)
-        addSubviews(titleLabel)
+        addSubviews(stackTopContainer)
         addSubviews(container)
         
-        container.addSubview(titleContainerLabel)
-        container.addSubview(descriptionLabel)
-        container.addSubview(buttonToStart)
+        container.addSubview(stackContainer)
     }
     
     func initConstraints() {
+        
+        //constraint device layout
+        let topConstraintConstant:CGFloat                = DeviceTypes.isiPhone14Pro ? 60 : 20
+        let distanceConstraintConstant:CGFloat           = DeviceTypes.isiPhone14Pro ? 90 : 20
+        let topStackContainerConstraintConstant:CGFloat  = DeviceTypes.isiPhone14Pro ? 42 : 20
+        
+        
         NSLayoutConstraint.activate([
-            imageMoney.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 60),
-            imageMoney.heightAnchor.constraint(equalToConstant: 228),
-            imageMoney.widthAnchor.constraint(equalToConstant: 365),
+            stackTopContainer.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant),
+            stackTopContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            stackTopContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
             
-            titleLabel.topAnchor.constraint(equalTo: imageMoney.bottomAnchor, constant: 8),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.widthAnchor.constraint(equalToConstant: 150),
-            
-            container.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 90),
+            container.topAnchor.constraint(equalTo: stackTopContainer.bottomAnchor, constant: distanceConstraintConstant),
             container.leadingAnchor.constraint(equalTo: leadingAnchor),
             container.trailingAnchor.constraint(equalTo: trailingAnchor),
             container.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            titleContainerLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 42),
-            titleContainerLabel.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 32),
-            titleContainerLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -32),
-
-            descriptionLabel.topAnchor.constraint(equalTo: titleContainerLabel.bottomAnchor, constant: 22),
-            descriptionLabel.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 32),
-            descriptionLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -32),
+            stackContainer.topAnchor.constraint(equalTo: container.topAnchor, constant: topStackContainerConstraintConstant),
+            stackContainer.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 32),
+            stackContainer.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -32),
             
-            buttonToStart.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 42),
-            buttonToStart.leftAnchor.constraint(equalTo: container.leftAnchor, constant: 32),
-            buttonToStart.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -32),
             buttonToStart.heightAnchor.constraint(equalToConstant: 45)
         ])
     }
     
     
-    func setupAdditional() {
-        buttonToStart.addAction(
-            UIAction { _ in
-                self.didButtonToStart()
-            }, for: .touchUpInside
-          )
-    }
+    func setupAdditional() {}
 }
 
 

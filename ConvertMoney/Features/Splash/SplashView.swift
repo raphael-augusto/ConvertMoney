@@ -12,11 +12,11 @@ protocol SplashLogic: AnyObject {}
 final class SplashView: UIView {
 
     // MARK: - Layout
-    private lazy var loadingIndicator = DPLoading(color: .white, style: .medium, size: 3)
+    private lazy var loadingIndicator = DPLoading(color: .Neutral.color6, style: .medium, size: 3)
     
     private lazy var loadingLabel = DPTitleLabel(text: "Carregando...",
                                                  textAlignment: .center,
-                                                 color: .white,
+                                                 color: .Neutral.color6,
                                                  fontSize: 22,
                                                  weight: .regular,
                                                  numberOfLines: nil)
@@ -42,7 +42,7 @@ final class SplashView: UIView {
 extension SplashView: ConfigurableView {
     
     func initView() {
-        backgroundColor = UIColor(named: "darkGreen")
+        backgroundColor = .Brand.color3
     }
     
     func initSubviews() {

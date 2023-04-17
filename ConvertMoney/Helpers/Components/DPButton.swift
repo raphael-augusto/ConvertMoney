@@ -9,8 +9,7 @@ import UIKit
 
 final class DPButton: UIButton {
     
-    private var tapAction: (() -> Void)?
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -23,9 +22,10 @@ final class DPButton: UIButton {
     }
     
     
-    convenience init(colorBackground: UIColor, title: String, titleColor: UIColor?) {
+    convenience init(colorBackground: UIColor, title: String, titleColor: UIColor?, action: UIAction) {
         self.init(frame: .zero)
         set(color: colorBackground, title: title, titleColor: titleColor)
+        addAction(action, for: .touchUpInside)
     }
     
     
@@ -40,5 +40,6 @@ final class DPButton: UIButton {
         configuration?.baseBackgroundColor  = color
         configuration?.baseForegroundColor  = titleColor ?? .white
         configuration?.title                = title
+
     }
 }

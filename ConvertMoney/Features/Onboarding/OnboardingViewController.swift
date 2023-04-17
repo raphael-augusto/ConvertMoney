@@ -11,7 +11,6 @@ final class OnboardingViewController: UIViewController {
 
     
     // MARK: - Properties
-    
     private lazy var customView: OnboardingProtocol = {
         let view = OnboardingView()
         view.delegate = self
@@ -21,19 +20,27 @@ final class OnboardingViewController: UIViewController {
 
     
     // MARK: - Dependencies
-    
+    private lazy var viewModel: OnboardingInput = {
+        let viewModel = OnboardingViewModel()
+        viewModel.output = self
+        return viewModel
+    }()
     
     
     // MARK: - Layout
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.setFirstViewer()
     }
+    
     
     override func loadView() {
         view = customView as? UIView
     }
 }
+
+extension OnboardingViewController: OnboardingOutput {}
 
 extension OnboardingViewController:  OnboardingProtocol {
 
@@ -41,3 +48,5 @@ extension OnboardingViewController:  OnboardingProtocol {
         print("Navigation home")
     }
 }
+
+

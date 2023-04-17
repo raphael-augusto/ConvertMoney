@@ -21,7 +21,7 @@ final class HomeView: UIView {
     
     //MARK: - Properts
     
-    private lazy var titleLabel = DPTitleLabel(text: "HOME", textAlignment: .center, color: .black, fontSize: 72, weight: .bold, numberOfLines: nil)
+    private lazy var titleLabel = DPTitleLabel(text: "HOME", textAlignment: .center, color: .Brand.color3, fontSize: 72, weight: .bold, numberOfLines: nil)
     
     private lazy var stack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
@@ -63,7 +63,7 @@ final class HomeView: UIView {
 extension HomeView : ConfigurableView {
     
     func initView() {
-        backgroundColor = .white
+        backgroundColor = .Neutral.color6
     }
     
     func initSubviews() {

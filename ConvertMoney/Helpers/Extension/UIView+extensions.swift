@@ -1,5 +1,5 @@
 //
-//  Ext+UIView.swift
+//  UIView+extensions.swift
 //  ConvertMoney
 //
 //  Created by Raphael Augusto on 09/04/23.
