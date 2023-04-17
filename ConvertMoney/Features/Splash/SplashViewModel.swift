@@ -9,18 +9,30 @@ import UIKit
 
 // Logic
 protocol SplashInput {
-    func checkData()
+    func validData()
 }
 
 // Delegate
 protocol SplashOutput: AnyObject {
-//    func showHome()
-//    func showOnboarding()
+    func showStart()
+    func showOnboarding()
 }
 
 final class SplashViewModel: SplashInput {
 
     weak var output: SplashOutput?
 
-    func checkData() {}
-}
+    private var onboardingFlowFlag: Bool {
+           return (ProcessInfo().environment["ONBOARDING_FLOW"] as? NSString)?.boolValue ?? false
+       }
+
+       func validData() {
+           DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) { [onboardingFlowFlag, output] in
+               if !onboardingFlowFlag && UserDefaults.standard.bool(forKey: "first_viewer") {
+                   output?.showStart()
+               } else {
+                   output?.showOnboarding()
+               }
+
+           }
+       }}

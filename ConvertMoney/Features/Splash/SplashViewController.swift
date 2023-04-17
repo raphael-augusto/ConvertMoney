@@ -29,7 +29,7 @@ final class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.checkData()
+        viewModel.validData()
     }
 
     override func loadView() {
@@ -39,7 +39,19 @@ final class SplashViewController: UIViewController {
 }
 
 extension SplashViewController: SplashOutput {
-
-
+    
+    func showStart() {
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .yellow
+        viewController.modalPresentationStyle = .currentContext
+        present(viewController, animated: true)
+    }
+    
+    func showOnboarding() {
+        let onboardingViewController = OnboardingViewController()
+        let navigationController = UINavigationController(rootViewController: onboardingViewController)
+        navigationController.modalPresentationStyle = .currentContext
+        present(navigationController, animated: true)
+    }
 
 }
